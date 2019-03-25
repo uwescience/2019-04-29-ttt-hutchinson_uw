@@ -70,7 +70,7 @@ locations:
 
 <p>
   <a href="{{ site.swc_site }}">Software Carpentry</a>,
-  <a href="{{ site.dc_site }}">Data Carpentry</a>, and 
+  <a href="{{ site.dc_site }}">Data Carpentry</a>, and
   <a href="{{ site.lc_site }}">Library Carpentry</a>'s mission is to
   help scientists, researchers, and librarians get more research done in less time
   and with less pain by teaching them basic lab skills for scientific
@@ -120,7 +120,6 @@ This is an online event. We will meet using the online videoconference software 
 {% endif %}
 {% endfor %}
 
-<<<<<<< HEAD:index.md
 <p>
   <strong>Requirements:</strong> Participants should bring a laptop
   that is Internet connected and has a functioning browser.  If you
@@ -144,7 +143,6 @@ This is an online event. We will meet using the online videoconference software 
     <a href="{{ site.swc_site }}/conduct/">Code of Conduct</a>.
   </em>
 </p>
-=======
 {% if inperson == "true" %}
 
 <h4 id="accessibility">Accessibility</h4>
@@ -152,7 +150,6 @@ This is an online event. We will meet using the online videoconference software 
 We are committed to making this workshop
 accessible to everybody.
 The workshop organisers have checked that:
->>>>>>> fix-18:index.html
 
 <ul>
   <li>The room is wheelchair / scooter accessible.</li>
@@ -223,7 +220,7 @@ site.swc_site }}/conduct/">Code of Conduct</a>.
   <li><a href="{{ site.training_site }}/papers/science-of-learning-2015.pdf">The Science of Learning</a></li>
 </ol>
 <p>
-  Please also read through <em>one</em> episode of of the Carpentries lessons below   
+  Please also read through <em>one</em> episode of of the Carpentries lessons below
   carefully, so that you can do some exercises based on it on the
   first day of the class.  An episode is one page of a lesson.
 </p>
@@ -233,7 +230,7 @@ site.swc_site }}/conduct/">Code of Conduct</a>.
   <li><a href="{{ site.dc_site }}/lessons">Data Carpentry Lessons</a></li>
   <li><a href="{{ site.lc_site }}/lessons">Library Carpentry Lessons</a></li>
   </ul>
-  
+
 
 <hr/>
 
