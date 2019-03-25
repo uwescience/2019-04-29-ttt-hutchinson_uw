@@ -1,21 +1,22 @@
 ---
 layout: workshop      # DON'T CHANGE THIS.
 root: .               # DON'T CHANGE THIS EITHER.  (THANK YOU.)
-carpentry: "FIXME"    # what kind of Carpentry (must be either "dc" or "swc")
-venue: "FIXME"        # brief name of host site without address (e.g., "Euphoric State University")
-address: "FIXME"      # full street address of workshop (e.g., "Room A, 123 Forth Street, Blimingen, Euphoria")
-country: "FIXME"      # lowercase two-letter ISO country code such as "fr" (see https://en.wikipedia.org/wiki/ISO_3166-1)
-language: "FIXME"     # lowercase two-letter ISO language code such as "fr" (see https://en.wikipedia.org/wiki/ISO_639-1)
-latlng: "FIXME"       # decimal latitude and longitude of workshop venue (e.g., "41.7901128,-87.6007318" - use http://www.latlong.net/)
-humandate: "FIXME"    # human-readable dates for the workshop (e.g., "Feb 17-18, 2020")
-humantime: "FIXME"    # human-readable times for the workshop (e.g., "9:00 am - 4:30 pm")
-startdate: FIXME      # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
-enddate: FIXME        # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
-instructor: ["FIXME"] # boxed, comma-separated list of instructors' names as strings, like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
-helper: ["FIXME"]     # boxed, comma-separated list of helpers' names, like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
-contact: ["fixme@example.org"]    # boxed, comma-separated list of contact email addresses for the host, lead instructor, or whoever else is handling questions, like ["marlyn.wescoff@example.org", "fran.bilas@example.org", "ruth.lichterman@example.org"]
-etherpad:             # optional: URL for the workshop Etherpad if there is one
+country: "us"      # lowercase two-letter ISO country code such as "fr" (see https://en.wikipedia.org/wiki/ISO_3166-1)
+language: "en"     # lowercase two-letter ISO language code such as "fr" (see https://en.wikipedia.org/wiki/ISO_639-1)
+humandate: "April 29th - 30th, 2019"    # human-readable dates for the workshop (e.g., "Feb 17-18, 2020")
+humantime: "9 AM - 4:30 PM"    # human-readable times for the workshop (e.g., "9:00 am - 4:30 pm")
+startdate: 2019-04-29      # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
+enddate: 2019-04-30        # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
+instructor: ["Ariel Rokem", "Kate Hertweck"] # boxed, comma-separated list of instructors' names as strings, like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
+helper: []     # boxed, comma-separated list of helpers' names, like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
+contact: ["arokem@uw.edu", "k8hertweck@gmail.com"]    # boxed, comma-separated list of contact email addresses for the host, lead instructor, or whoever else is handling questions, like ["marlyn.wescoff@example.org", "fran.bilas@example.org", "ruth.lichterman@example.org"]
+etherpad: https://pad.carpentries.org/2019-04-29-ttt-hutchinson_uw           # optional: URL for the workshop Etherpad if there is one
 eventbrite:           # optional: alphanumeric key for Eventbrite registration, e.g., "1234567890AB" (if Eventbrite is being used)
+locations:
+  - venue: "The University of Washington eScience Institute"
+    address: "WRF Data Science Studio, 6th floor Physics/Astronomy Tower, University of Washington, 3910 15th Ave NE, Seattle, WA, 98105"
+    latlng: "47.606209, -122.332071"
+
 ---
 
 <!-- See instructions in the comments below for how to edit specific sections of this workshop template. -->
@@ -95,18 +96,31 @@ eventbrite:           # optional: alphanumeric key for Eventbrite registration, 
   if the latitude and longitude of the workshop have been set.  You
   can use http://itouchmap.com/latlong.html to find the lat/long of an
   address.
--->
-{% if page.latlng %}
-<p id="where">
-  <strong>Where:</strong>
-  {{page.address}}.
-  Get directions with
-  <a href="//www.openstreetmap.org/?mlat={{page.latlng | replace:',','&mlon='}}&zoom=16">OpenStreetMap</a>
-  or
-  <a href="//maps.google.com/maps?q={{page.latlng}}">Google Maps</a>.
-</p>
-{% endif %}
+  -->
+<h3 id="where">Where</h3>
 
+{% assign inperson = "false" %}
+{% for loc in page.locations %}
+
+{% capture online %}{{ loc.venue | downcase }}{% endcapture %}
+
+<h4>{{ loc.venue }}</h4>
+
+{% if online == "online" %}
+
+This is an online event. We will meet using the online videoconference software Zoom. You will need to <a href="https://zoom.us/download">download and install their client</a> to connect with your instructors. The link to use for this event is <{{ loc.address }}>.
+
+{% else %}
+{% assign inperson = "true" %}
+{{ loc.address }} {% if loc.latlng %} Get directions with
+    <a href="//www.openstreetmap.org/?mlat={{loc.latlng | replace:',','&mlon='}}&zoom=16">OpenStreetMap</a>
+    or
+    <a href="//maps.google.com/maps?q={{loc.latlng}}">Google Maps</a>. {% endif %}
+
+{% endif %}
+{% endfor %}
+
+<<<<<<< HEAD:index.md
 <p>
   <strong>Requirements:</strong> Participants should bring a laptop
   that is Internet connected and has a functioning browser.  If you
@@ -130,27 +144,56 @@ eventbrite:           # optional: alphanumeric key for Eventbrite registration, 
     <a href="{{ site.swc_site }}/conduct/">Code of Conduct</a>.
   </em>
 </p>
+=======
+{% if inperson == "true" %}
 
-<p id="accessibility">
-  <strong>Accessibility:</strong> We are committed to making this workshop
-  accessible to everybody.
-  The workshop organisers have checked that:
-</p>
+<h4 id="accessibility">Accessibility</h4>
+
+We are committed to making this workshop
+accessible to everybody.
+The workshop organisers have checked that:
+>>>>>>> fix-18:index.html
+
 <ul>
   <li>The room is wheelchair / scooter accessible.</li>
   <li>Accessible restrooms are available.</li>
 </ul>
-<p>
+
   Materials will be provided in advance of the workshop and
   large-print handouts are available if needed by notifying the
   organizers in advance.  If we can help making learning easier for
   you (e.g. sign-language interpreters, lactation facilities) please
   please get in touch (using contact details below) and we will
   attempt to provide them.
-</p>
 
-<p id="contact">
-  <strong>Contact</strong>:
+{% endif %}
+
+<h3>Requirements</h3>
+
+Participants should bring a laptop that is Internet connected and has a
+  functioning browser. If you have it, a device for recording audio and video
+  (mobile phones and laptops are OK) is useful as throughout the two days, we
+  are going to record one another teaching in pairs or threes. It does not have
+  to be high-quality, but it should be good enough that you can understand what
+  someone is saying.
+
+  Please note that after this course is over, you will be asked to do
+  three short follow-up exercises online in order to finish qualifying
+  as an instructor: the details are available at
+  <a href="{{ site.training_site }}/checkout/">{{ site.training_site }}/checkout/</a>.
+  If you have any questions about the workshop, the reading material,
+  or anything else, please get in touch.
+
+
+<h3>Code of Conduct</h3>
+
+All participants are required to abide by Software Carpentry's <a href="{{
+site.swc_site }}/conduct/">Code of Conduct</a>.
+
+
+
+<h3 id="contact">Contact</h3>
+
   Please email
   {% if page.contact %}
     {% for contact in page.contact %}
