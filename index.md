@@ -191,22 +191,8 @@ site.swc_site }}/conduct/">Code of Conduct</a>.
 
 <h3 id="contact">Contact</h3>
 
-  Please email
-  {% if page.contact %}
-    {% for contact in page.contact %}
-      {% if forloop.last and page.contact.size > 1 %}
-        or
-      {% else %}
-        {% unless forloop.first %}
-        ,
-        {% endunless %}
-      {% endif %}
-      <a href='mailto:{{contact}}'>{{contact}}</a>
-    {% endfor %}
-  {% else %}
-    to-be-announced
-  {% endif %}
-  for more information.
+<p>
+<a href='mailto:arokem@uw.edu'>arokem@uw.edu</a> or <a href='mailto:k8hertweck@gmail.com'>k8hertweck@gmail.com</a> for more information.
 </p>
 
 <hr/>
